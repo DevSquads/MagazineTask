@@ -40,5 +40,15 @@ exports.update = (id,description) => {
 
 
 exports.deleteOne = (id) => {
-    return model.deleteOne({_id:id});
+    return model.findByIdAndDelete(id).exec();
 }
+
+
+//for listing articles in set of pages
+exports.getPage = (pageSize,pageNum) => {
+    return model.find().sort('-createdAt').skip((pageNum-1)*pageSize).limit(pageSize).exec();
+};
+
+exports.countArticles = () => {
+    return model.countDocuments();
+};
