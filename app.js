@@ -8,7 +8,6 @@ var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
 var mongoose=require('mongoose');
 var app = express();
-
 const url = 'mongodb://localhost:27017/magazine-db';
 console.log('waiting DB connecting...');
 const connect= mongoose.connect(url,{autoIndex:true,retryWrites:false,useNewUrlParser:true,useUnifiedTopology:true,useCreateIndex:true });
