@@ -10,10 +10,8 @@
 7) setup the script path to "MagazineTask.py" file location
 8) press ok and run the project
 
-# Story
-Samir the chief editor in “legen- wait for it-dary news” asked the magazine owner Yehia to make him an appointment with DevSquads their technical partner to ask them for help.
-He wants to make an app that would help his writers create new articles and manage them, every article has a title, description, and author name.
-
+# Class Diagram
+![](Images/MagazineTask -class diagram.png)
 
 # Requirements
 - List of articles.
