@@ -7,7 +7,7 @@
 4) click the "+" sign at the left top to add new configuration
 5) choose "python"
 6) setup python interpreter to "Python 3.7 (MagazineTask)"
-7) setup the script path to "MagazineTask.py" file location
+7) setup the script path to "path/to/MagazineTask.py"
 8) press ok and run the project
 
 # Class Diagram
