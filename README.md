@@ -11,7 +11,7 @@
 8) press ok and run the project
 
 # Class Diagram
-![](Images/MagazineTask -class diagram.png)
+![](Images/ClassDiagram.png)
 
 # Requirements
 - List of articles.
