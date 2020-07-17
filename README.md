@@ -1,14 +1,28 @@
 # MagazineTask
 
 # Steps to Run the Project
-1) make sure you've installed python 3.7 if you don't have it 
-2) Open the project using pycharm IDE
-3) at the right top of the IDE press "Add Configurations"
-4) click the "+" sign at the left top to add new configuration
-5) choose "python"
-6) setup python interpreter to "Python 3.7"
-7) setup the script path to "path/to/MagazineTask.py"
-8) press ok and run the project
+- Using an existing python 3.7 interpreter
+  1) make sure you've installed python 3.7 if you don't have it 
+  2) Open the project using pycharm IDE
+  3) at the right top of the IDE press "Add Configurations"
+  4) click the "+" sign at the left top to add new configuration
+  5) choose "python"
+  6) setup python interpreter to "Python 3.7"
+  7) setup the script path to "path/to/MagazineTask.py"
+  8) press ok and run the project
+
+- Using virtualenv interpreter
+  1) install puthon 3.7 if you din't have it
+  2) open pycharm and create new project
+  3) extend the "project interpreter option"
+  4) select new enviroment using and choose "virtualenv" option
+  5) choose the base interpreter "python 3.7" and press "create"
+  6) at the right top of the IDE press "Add Configurations"
+  7) click the "+" sign at the left top to add new configuration
+  8) choose "python"
+  9) setup python interpreter to "Python 3.7 (folder name)"
+  10) setup the script path to "path/to/MagazineTask.py"
+  11) press ok and run the project
 
 # Class Diagram
 ![](Images/ClassDiagram.png)
