@@ -6,7 +6,7 @@
 3) at the right top of the IDE press "Add Configurations"
 4) click the "+" sign at the left top to add new configuration
 5) choose "python"
-6) setup python interpreter to "Python 3.7 (MagazineTask)"
+6) setup python interpreter to "Python 3.7"
 7) setup the script path to "path/to/MagazineTask.py"
 8) press ok and run the project
 
