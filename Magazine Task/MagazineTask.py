@@ -77,9 +77,9 @@ class UpdateTitle(UpdateStrategy):
         return article
 
 
-class UpdateDescitption(UpdateStrategy):
+class UpdateDescription(UpdateStrategy):
     def updateArticle(self, updateDescription, article):
-        article.setTitle(updateDescription)
+        article.setDescription(updateDescription)
         return article
 
 
@@ -103,6 +103,69 @@ class Context:
         return self._updateStrategy.updateArticle(updatedArgument, article)
 
 
+class Options:
+    def __init__(self):
+        self.__articlesManager = ArticlesManager()
+
+    def option1_createArticle(self, listOfArticles):
+        authorName = input("Enter Author Name:")
+        title = input("Enter Title:")
+        description = input("Enter Description:")
+        article = self.__articlesManager.createArticle(authorName, title, description)
+        listOfArticles.append(article)
+
+    def option2_listArticles(self, listOfArticles):
+        self.__articlesManager.context._listStrategy = listInTerminal()
+        self.__articlesManager.context.listArticles(listOfArticles)
+
+    def option3_deleteAnArticle(self, listOfArticles):
+        self.__articlesManager.context._listStrategy = listInTerminal()
+        self.__articlesManager.context.listArticles(listOfArticles)
+        indexOfArticle = int(input("Enter the number of the article you want to delete"))
+        isDeleted = self.__articlesManager.deleteAnArticle(indexOfArticle - 1, listOfArticles)
+        if isDeleted is False:
+            print("Article ", indexOfArticle, " doesn't exist")
+
+    def optoin4_updateAnArticle(self, listOfArticles):
+        self.__articlesManager.context._listStrategy = listInTerminal()
+        self.__articlesManager.context.listArticles(listOfArticles)
+
+        indexOfArticle = int(input("Enter the number of the article you want to update"))
+
+        print("For Updating the author name please enter 1\n"
+              "For Updating the title please enter 2\n"
+              "For Updating the description please enter 3\n")
+        updateOption = input()
+        while updateOption is not "1" and updateOption is not "2" and updateOption is not "3":
+            updateOption = input("please enter 1,2 or 3 only")
+
+        self.__articlesManager.updateAnArticle(updateOption, indexOfArticle - 1, listOfArticles)
+
+    def showOptionsList(self, listOfArticles):
+        while True:
+            print("For Creating an article please enter 1\n"
+                  "For listing the articles please enter 2\n"
+                  "For Deleting an article please enter 3\n"
+                  "For Updating an article please enter 4\n"
+                  "For Exiting enter exit")
+            optionNumber = input()
+            if optionNumber == "exit":
+                self.__articlesManager.saveArticlesToFile(listOfArticles)
+                break
+
+            elif optionNumber == "1":
+                self.option1_createArticle(listOfArticles)
+
+            elif optionNumber == "2":
+                self.option2_listArticles(listOfArticles)
+
+            elif optionNumber == "3":
+                self.deleteAnArticle(listOfArticles)
+
+            elif optionNumber == "4":
+                self.optoin4_updateAnArticle(listOfArticles)
+
+
 class ArticlesManager:
     context = Context(listInTerminal())
 
@@ -110,13 +173,13 @@ class ArticlesManager:
         return Article(authorName, title, description)
 
     def deleteAnArticle(self, indexOfArticle, listOfArticles):
-        if indexOfArticle > len(listOfArticles) or indexOfArticle < 1:
+        if indexOfArticle >= len(listOfArticles) or indexOfArticle < 0:
             return False
-        del listOfArticles[indexOfArticle - 1]
+        del listOfArticles[indexOfArticle]
         return True
 
-    def updateAnArticle(self, updateOption,indexOfArticle, listOfArticles):
-        article = listOfArticles[indexOfArticle-1]
+    def updateAnArticle(self, updateOption, indexOfArticle, listOfArticles):
+        article = listOfArticles[indexOfArticle - 1]
         if (updateOption == "1"):
             updatedAuthorName = input("Please enter the new author name")
             self.context._updateStrategy = UpdateAuthorName()
@@ -129,7 +192,7 @@ class ArticlesManager:
 
         elif (updateOption == "3"):
             updatedDescription = input("Please enter the new description")
-            self.context._updateStrategy = UpdateDescitption()
+            self.context._updateStrategy = UpdateDescription()
             updatedArticle = self.context.updateArticle(updatedDescription, article)
 
         self.deleteAnArticle(indexOfArticle, listOfArticles)
@@ -155,59 +218,12 @@ class ArticlesManager:
         f.close()
         return listOfArticles
 
-    def showOptionsList(self, listOfArticles):
-        self.readArticlesFromFile()
-
-        while True:
-            print("For Creating an article please enter 1\n"
-                  "For listing the articles please enter 2\n"
-                  "For Deleting an article please enter 3\n"
-                  "For Updating an article please enter 4\n"
-                  "For Exiting enter exit")
-            optionNumber = input()
-            if optionNumber == "exit":
-                self.saveArticlesToFile(listOfArticles)
-                break
-
-            elif optionNumber == "1":
-                authorName = input("Enter Author Name:")
-                title = input("Enter Title:")
-                description = input("Enter Description:")
-                article = self.createArticle(authorName, title, description)
-                listOfArticles.append(article)
-
-            elif optionNumber == "2":
-                self.context._listStrategy = listInTerminal()
-                self.context.listArticles(listOfArticles)
-
-            elif optionNumber == "3":
-                self.context._listStrategy = listInTerminal()
-                self.context.listArticles(listOfArticles)
-                indexOfArticle = int(input("Enter the number of the article you want to delete"))
-                isDeleted = self.deleteAnArticle(indexOfArticle, listOfArticles)
-                if isDeleted is False:
-                    print("Article ", indexOfArticle, " doesn't exist")
-
-            elif optionNumber == "4":
-                self.context._listStrategy = listInTerminal()
-                self.context.listArticles(listOfArticles)
-
-                indexOfArticle = int(input("Enter the number of the article you want to update"))
-
-                print("For Updating the author name please enter 1\n"
-                      "For Updating the title please enter 2\n"
-                      "For Updating the description please enter 3\n")
-                updateOption = input()
-                while updateOption is not "1" and updateOption is not "2" and updateOption is not "3":
-                    updateOption = input("please enter 1,2 or 3 only")
-
-                self.updateAnArticle(updateOption,indexOfArticle,listOfArticles)
-
 
 def main():
     articleManager = ArticlesManager()
     listOfArticles = articleManager.readArticlesFromFile()
-    articleManager.showOptionsList(listOfArticles)
+    options = Options()
+    options.showOptionsList(listOfArticles)
 
 
 if __name__ == "__main__":
