@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Article>
+@{
+    ViewData["Title"] = "Home";
+
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+            <h1 class="my-4">
+                All Articles
+
+            </h1>
+            @if (!Model.Any())
+            {
+
+                <p class="text-center">No Articles at this point </p>
+            }
+            else
+            {
+
+                @foreach (var article in Model)
+                {
+
+
+
+
+                    <!-- Blog Post -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h2 class="card-title">@article.Title</h2>
+                            <p class="card-text">@article.ShortDescription</p>
+                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@article.Id">Read More&rarr;</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted by @article.ApplicationUser.UserName
+
+                        </div>
+                    </div>
+
+                }
+            }
+        </div>
+    </div>
+</div>

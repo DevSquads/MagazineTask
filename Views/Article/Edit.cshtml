@@ -1,0 +1,47 @@
+﻿@model Article
+@{
+    ViewData["Title"] = "Edit Article";
+
+}
+
+<h4>Update Article </h4>
+<hr />
+<form asp-controller="Article" asp-action="Edit" asp-route-PieId="@Model.Id" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <div class="form-group">
+        <label asp-for="@Model.Title" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="@Model.Title" class="form-control" />
+            <span asp-validation-for="@Model.Title" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.ShortDescription" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="@Model.ShortDescription" class="form-control" />
+            <span asp-validation-for="@Model.ShortDescription" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.LongDescription" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="@Model.LongDescription" class="form-control" />
+            <span asp-validation-for="@Model.LongDescription" class="text-danger"></span>
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="Update Article" />
+        </div>
+    </div>
+</form>
