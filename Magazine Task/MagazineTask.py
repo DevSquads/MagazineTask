@@ -103,7 +103,7 @@ class Context:
         return self._updateStrategy.updateArticle(updatedArgument, article)
 
 
-class ManageArticles:
+class ArticlesManager:
     context = Context(listInTerminal())
 
     def createArticle(self, authorName, title, description):
@@ -131,7 +131,7 @@ class ManageArticles:
             updatedDescription = input("Please enter the new description")
             self.context._updateStrategy = UpdateDescitption()
             updatedArticle = self.context.updateArticle(updatedDescription, article)
-            
+
         self.deleteAnArticle(indexOfArticle, listOfArticles)
         listOfArticles.insert(indexOfArticle, updatedArticle)
 
@@ -205,9 +205,9 @@ class ManageArticles:
 
 
 def main():
-    manageArticle = ManageArticles()
-    listOfArticles = manageArticle.readArticlesFromFile()
-    manageArticle.showOptionsList(listOfArticles)
+    articleManager = ArticlesManager()
+    listOfArticles = articleManager.readArticlesFromFile()
+    articleManager.showOptionsList(listOfArticles)
 
 
 if __name__ == "__main__":
