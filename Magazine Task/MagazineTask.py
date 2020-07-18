@@ -150,7 +150,7 @@ class Options:
                   "For Exiting enter exit")
             optionNumber = input()
             if optionNumber == "exit":
-                self.__articlesManager.saveArticlesToFile(listOfArticles)
+                self.__articlesManager.listArticlesInFile(listOfArticles)
                 break
 
             elif optionNumber == "1":
