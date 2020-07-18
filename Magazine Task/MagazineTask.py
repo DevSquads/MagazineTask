@@ -198,7 +198,7 @@ class ArticlesManager:
         self.deleteAnArticle(indexOfArticle, listOfArticles)
         listOfArticles.insert(indexOfArticle, updatedArticle)
 
-    def saveArticlesToFile(self, listOfArticles):
+    def listArticlesInFile(self, listOfArticles):
         self.context._listStrategy = listInFile()
         self.context.listArticles(listOfArticles)
 
