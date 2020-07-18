@@ -1,0 +1,31 @@
+{
+  "name": "magazinetask",
+  "version": "1.0.0",
+  "description": "- Fork the repo to your Github https://help.github.com/en/articles/fork-a-repo.\r - Push your work to your forked repo \"user-name/MagazineTask\".\r - Create pull request in the original repo \"devsquads/MagazineTask\"",
+  "main": "app.js",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "mongoose": "^5.9.25",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "serve": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moon04/MagazineTask.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Moon04/MagazineTask/issues"
+  },
+  "homepage": "https://github.com/Moon04/MagazineTask#readme"
+}
