@@ -25,7 +25,7 @@
   11) press ok and run the project
 
 # Class Diagram
-![](Images/ClassDiagram_Updated.png)
+![](Images/ClassDiagram_Updates.png)
 
 # Design Decisions/Alternatives
 - DataBase is a must but, due to some minor complexity in extracting the databse and upload it to github. I have used files instead (you can find the file in the project root under the name "articles") to save some time.
