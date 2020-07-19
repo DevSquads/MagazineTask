@@ -9,7 +9,7 @@ describe('GET page/:pagenum', () => {
         .expect(200)
         .expect((res) => {
             expect(res.body!=null).toBe(true);
-            expect(res.body.length>=0).toBe(true);
+            expect(res.body.length>=0 && res.body.length<=10).toBe(true);
         }).end(done);
     });
     it('not valid page number',(done)=> {

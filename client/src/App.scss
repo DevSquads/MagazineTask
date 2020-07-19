@@ -1,0 +1,19 @@
+@import '~bootstrap/scss/bootstrap.scss';
+$articleBackground : #F8F9FA;
+.article
+{
+    padding: 8px;
+    .auther{
+        font-size: small;
+        font-weight: 200;
+    }
+}
+.article:hover{
+    background-color: $articleBackground;
+    cursor: pointer;
+}
+
+#root{
+    overflow-x: hidden;
+}
+
