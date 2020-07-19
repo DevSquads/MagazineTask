@@ -66,6 +66,7 @@ class UpdateStrategy(ABC):
 
 
 class UpdateAuthorName(UpdateStrategy):
+
     def updateArticle(self, updateAuthorName, article):
         article.setAuthorName(updateAuthorName)
         return article
@@ -113,6 +114,7 @@ class Options:
         description = input("Enter Description:")
         article = self.__articlesManager.createArticle(authorName, title, description)
         listOfArticles.append(article)
+        self.__articlesManager.listArticlesInFile(listOfArticles)
 
     def option2_listArticles(self, listOfArticles):
         self.__articlesManager.context._listStrategy = listInTerminal()
@@ -130,7 +132,9 @@ class Options:
         self.__articlesManager.context._listStrategy = listInTerminal()
         self.__articlesManager.context.listArticles(listOfArticles)
 
-        indexOfArticle = int(input("Enter the number of the article you want to update"))
+        indexOfArticle = 0
+        while indexOfArticle > len(listOfArticles) or indexOfArticle <= 0:
+            indexOfArticle = int(input("Enter the number of the article you want to update"))
 
         print("For Updating the author name please enter 1\n"
               "For Updating the title please enter 2\n"
@@ -140,6 +144,8 @@ class Options:
             updateOption = input("please enter 1,2 or 3 only")
 
         self.__articlesManager.updateAnArticle(updateOption, indexOfArticle - 1, listOfArticles)
+        self.__articlesManager.listArticlesInFile(listOfArticles)
+
 
     def showOptionsList(self, listOfArticles):
         while True:
@@ -150,8 +156,7 @@ class Options:
                   "For Exiting enter exit")
             optionNumber = input()
             if optionNumber == "exit":
-                self.__articlesManager.listArticlesInFile(listOfArticles)
-                break
+                return 
 
             elif optionNumber == "1":
                 self.option1_createArticle(listOfArticles)
@@ -160,7 +165,7 @@ class Options:
                 self.option2_listArticles(listOfArticles)
 
             elif optionNumber == "3":
-                self.deleteAnArticle(listOfArticles)
+                self.option3_deleteAnArticle(listOfArticles)
 
             elif optionNumber == "4":
                 self.optoin4_updateAnArticle(listOfArticles)
@@ -176,10 +181,11 @@ class ArticlesManager:
         if indexOfArticle >= len(listOfArticles) or indexOfArticle < 0:
             return False
         del listOfArticles[indexOfArticle]
+        self.listArticlesInFile(listOfArticles)
         return True
 
     def updateAnArticle(self, updateOption, indexOfArticle, listOfArticles):
-        article = listOfArticles[indexOfArticle - 1]
+        article = listOfArticles[indexOfArticle] #?
         if (updateOption == "1"):
             updatedAuthorName = input("Please enter the new author name")
             self.context._updateStrategy = UpdateAuthorName()
