@@ -7,7 +7,7 @@ module.exports = (app) => {
     // Retrieve all articles
     app.get('/articles/List', articles.findAll);
 
-    // Retrieve a single Articlewith ArticleId
+    // Retrieve a single Article with ArticleId
     app.get('/articles/GetById/:ArticleId', articles.findOne);
 
     // Update a Articlewith ArticleId
