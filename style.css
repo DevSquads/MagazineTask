@@ -1,0 +1,102 @@
+
+/* elements styles */
+
+body {
+    background-color: #F0FFFF;
+}
+
+a {
+    font-size: 1.5em;
+}
+
+form {
+    padding-left: 30px;
+}
+
+/* main body */
+#main {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#page_title {
+    display: block;
+    text-align: center;
+    font-size: 2em;
+    top: 40px;
+}
+
+/* header and header buttons */
+
+#header_div {
+    display: block;
+    float: left;
+    top: 0px;
+    width: 100%;
+    height: 5%;
+    min-height: 25px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.header_form {
+    display: inline;
+    padding: 0px;
+    margin: 0px;
+}
+
+.header_button {
+    width: 30%;
+    display: inline;
+    padding: 10px 5% 10px 5%;
+    margin: 10px 7% 10px 7%;
+    max-height: 40px;
+    min-width: 200px;
+    background-color: #FFF8DC;
+    border-color: #2F4F4F;
+    color: #808080;
+}
+
+/* create article form and its elementes */
+
+#create_article * {
+    display: block;
+    padding: 4px;
+}
+
+#create_article {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.form_button {
+    position: relative;
+    left: 40px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #E6E6FA;
+    color: black;
+}
+
+/* other ui elements */
+
+.del_article {
+    padding: 3px;
+    margin: 20px;
+    left: 40%;
+}
+
+#msg {
+    position: absolute;
+    display: block;
+    top: 15%;
+}
+
+.article {
+    padding: 7px;
+    margin: 20px;
+    background-color: #ADD8E6;
+    border: unset;
+    border-radius: 10px;
+}
