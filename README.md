@@ -7,25 +7,43 @@
     - Update Article
     - Delete Article
 
-## How to use this app, go with the following steps:
-    1. Clone the repo
-    2. Run this command - __npm install__ - in your cmd inside the project directory 
-        or/ in VSCode terminal to install all app dependencies.
-    3. Make sure that your local mongodb service is running though if you faced any issues, you could follow these steps - __this is for testing only!__ - to setup the app db:
-        - Create - __.env__ - file in your project
-        - Add the following credentials in the created file:
-            PORT=3000
-            DB_USERNAME=dbUser
-            DB_PASSWORD=9ZbHMgq8ik59Cnq5
-            DB_CLUSTER=cluster0
-            DB_NAME=magazineDB
-    4. Now you can run the app by using this command - __npm start__ - 
-    5. You can test each method using this link: 
-        [Magazine Task](https://documenter.getpostman.com/view/11135864/T1DjkfP5?version=latest) 
-        it's a collection on postman or/ you can use any program you prefer.
+## How to use the app:
 
+- clone the repo
+``` ssh
+$ git clone https://github.com/Moon04/MagazineTask.git
+```
+- install dependencies
+```ssh
+$ npm install
+```
+- make sure mongodb service is running locally 
+```ssh
+$ sudo systemctl status mongod
+```
+- **Optional**:
+    > if mongodb service is running locally, simply ignore this step. The app will detect the absence of the .env file and will connect to localhost on magazineDB.
 
-   
+    if for any reason your mongodb service is not running you can use this test database:
+    - create `.env` file in the root directory of the server
+    - add the following environment variables:
+```bash
+PORT=3000
+DB_USERNAME=dbUser
+DB_PASSWORD=9ZbHMgq8ik59Cnq5
+DB_CLUSTER=cluster0
+DB_NAME=magazineDB
+```
 
-
+- start the server in development mode using nodemon
+```ssh
+$ npm run dev
+```
+or 
+```ssh
+$ npm start
+```
+    
+## Documentation:
+[Magazine Task Postman collection](https://documenter.getpostman.com/view/11135864/T1DjkfP5?version=latest)
 
