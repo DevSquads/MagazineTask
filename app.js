@@ -13,7 +13,7 @@ const app = express();
 mongoose.connect(config.dbUri, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(()=>{
 
-        console.log(`- Connected successfully to database:  ${config.dbUri} -`);
+        console.log(`- Connected successfully to database -`);
 
         // Middlwares
         app.use(logger('dev'));
