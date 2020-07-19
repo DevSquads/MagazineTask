@@ -4,7 +4,10 @@
   box-sizing: border-box;
 }
 body {
-  background: #e27442;
+  background-image: url(../assets/challenge-accepted.png);
+  background-repeat: round;
+  background-size: 200px;
+  background-color: #e27442;
 }
 .magazine-container {
   color: white;
@@ -14,7 +17,8 @@ body {
   padding: 20px;
   width: 600px;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 5px 5px 50px black, -5px -5px 50px black;
+  background: rgba( 226, 116, 66, 0.9);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -44,7 +48,6 @@ body {
 }
 
 .magazine-header, textarea {
-  padding-top: 5px;
   resize: none;
 }
 
