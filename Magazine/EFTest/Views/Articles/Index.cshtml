@@ -1,0 +1,86 @@
+﻿@model IEnumerable<EFTest.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>The Latest News</h2>
+<hr />
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+<div class="container">
+
+    <div class="row">
+
+        @foreach (var item in Model)
+
+        { 
+            <div class="fullcontent  col-md-9 modal-content" style="margin-bottom:30px;background-color:#f2f0f0">
+              
+              <section >
+                <h1 style="color:#0094ff">  @Html.DisplayFor(modelItem => item.Title) </h1>
+                <div style="margin:-12px 0 25px 12px ;color:#094c7d"> <span style="color:black; font-weight:200">by : </span> 
+                  @Html.ActionLink(item.author.Name,"Articlesby","Authors",new { @id=item.author.ID},null) </div> 
+
+                  <article style="width:60%; height:20px; white-space:nowrap; overflow:hidden; 
+                                                         text-overflow:ellipsis;font-family:'Times New Roman', Times, serif;font-size:large ">
+                       @Html.DisplayFor(modelitem=>item.Description)
+                   </article>
+              </section>
+                @Html.ActionLink("View FULL Post","Details","Articles",new {id=item.ID },new { @style="margin:20px 0 10px 0",@class="btn btn-primary"})
+            </div>
+        }
+    </div>
+</div>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            @*@Html.DisplayNameFor(model => model.author.Name)
+       
+            @Html.DisplayNameFor(model => model.Title)
+       
+            @Html.DisplayNameFor(model => model.Description)
+       
+            @Html.DisplayNameFor(model => model.Publishedon)
+    
+
+@foreach (var item in Model) {
+   
+            @Html.DisplayFor(modelItem => item.author.Name)
+       
+            @Html.DisplayFor(modelItem => item.Title)
+       
+            @Html.DisplayFor(modelItem => item.Description)
+       
+            @Html.DisplayFor(modelItem => item.Publishedon)
+       
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
+    
+
+

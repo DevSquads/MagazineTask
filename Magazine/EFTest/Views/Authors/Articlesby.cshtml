@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EFTest.Models.Article>
+
+@{
+    ViewBag.Title = "Articlesby";
+}
+
+<h2>Articles by <span style="color:red">@ViewBag.by</span></h2>
+
+<hr />
+<div class="container">
+
+    <div class="row">
+
+        @foreach (var item in Model)
+
+        {
+            <div class="fullcontent  col-md-9 modal-content" style="margin-bottom:0px;background-color:#f2f0f0">
+
+                <section>
+                    <h1 style="color:#0094ff">  @Html.DisplayFor(modelItem => item.Title) </h1>
+                    <div style="margin:-12px 0 25px 12px ;color:#094c7d">
+                    </div>
+                    <article style="width:60%;  height:20px; white-space:nowrap; overflow:hidden;
+                                                         text-overflow:ellipsis;font-family:'Times New Roman', Times, serif;font-size:large ">
+                        @Html.DisplayFor(modelitem => item.Description)
+                    </article>
+                </section>
+                @Html.ActionLink("View FULL Post", "Details", "Articles", new { id = item.ID }, new { @style = "margin:20px 0 10px;", @class = "btn btn-success" })
+            
+            </div>
+            <p class="row">
+
+                @using (Html.BeginForm("Delete", "Articles", new { id =item.ID  }, FormMethod.Post))
+                {
+                    @Html.ActionLink(" ", "Edit","Articles", new { id = item.ID }, new { @class = "btn btn-primary glyphicon glyphicon-edit" })
+
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick=" return confirm('are you sure you will delete this Article?')"></button>
+
+
+
+                }
+            </p>
+            <br>
+
+         }
+
+    </div>
+</div>
+
+
+

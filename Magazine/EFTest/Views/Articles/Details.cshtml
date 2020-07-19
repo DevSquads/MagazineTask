@@ -1,0 +1,52 @@
+﻿@model EFTest.Models.Article
+
+@{
+    ViewBag.Title = "ARTICLE";
+   
+
+
+}
+
+<h2>Full Article </h2>
+
+
+
+
+<div class="container">
+
+    <div class="row">
+
+
+        <div class="fullcontent  col-md-9 modal-content" style="margin-bottom:30px;background-color:#f2f0f0;padding-bottom:10px;">
+
+            <section>
+                <h1 style="color:#0094ff;text-align:center">  @Html.DisplayFor(item => item.Title) </h1>
+
+
+                <blockquote style="width:100%; text-align:center; text-overflow:ellipsis;font-family:'Times New Roman', Times, serif;font-size:larger ">
+                   " @Html.DisplayFor(item => item.Description) "
+                </blockquote>
+
+            
+                <p style="margin:12px 0 0px 14px ;color:#514d4d">
+                    Written By ,</p>
+
+                <span style="margin:0px 0 0px 16px ;color:#411dd9">   @Html.DisplayFor(item => item.author.Name) </span>
+                
+
+            </section>
+
+          
+
+
+        </div>
+
+
+
+
+    </div>
+
+ </div >
+
+
+
