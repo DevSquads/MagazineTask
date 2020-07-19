@@ -26,3 +26,10 @@ He wants to make an app that would help his writers create new articles and mana
 
 # Task Deadline
 - Monday Morning 20/07/2020.
+
+# How it works
+- Clone the Code
+- Run npm install
+
+# How to run
+-npm start
