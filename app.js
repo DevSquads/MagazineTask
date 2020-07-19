@@ -4,13 +4,12 @@ const createError = require('http-errors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const config = require('./config');
-
 const articleRouter = require('./router/article');
 
 
 const app = express();
 
-
+//db connection setup
 mongoose.connect(config.dbUri, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(()=>{
 
@@ -40,8 +39,8 @@ mongoose.connect(config.dbUri, { useNewUrlParser: true, useUnifiedTopology: true
             res.send('error');
         });
 
-        app.listen(config.port, ()=> console.log(`- Server is listening on port ${config.port}`));
+        app.listen(config.port, ()=> console.log(`- Server is listening on port ${config.port} -`));
     })
-    .catch(err => console.log('- Error while connecting to database', err));
+    .catch(err => console.log('- Error while connecting to database ', err));
 
 module.exports = app;

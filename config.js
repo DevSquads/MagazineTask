@@ -15,9 +15,7 @@ module.exports = {
     dbName: process.env.DB_NAME,
     dbUser: process.env.DB_USERNAME,
     dbPassword: process.env.DB_PASSWORD,
-    get dbUri() { return `mongodb+srv://${this.dbUser}:${this.dbPassword}@${this.dbCluster}.ju7iw.mongodb.net/${this.dbName}?retryWrites=true&w=majority`}
+    get dbUri() { 
+        return `mongodb+srv://${this.dbUser}:${this.dbPassword}@${this.dbCluster}.ju7iw.mongodb.net/${this.dbName}?retryWrites=true&w=majority`;
+    }
 }
-
-
-// DB_USERNAME=magazineAdmin
-// DB_PASSWORD=aW45h0Vvr5HO5DXk
