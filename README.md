@@ -1,28 +1,21 @@
 # MagazineTask
 
 # Description
-- Fork the repo to your Github https://help.github.com/en/articles/fork-a-repo.
-- Push your work to your forked repo "user-name/MagazineTask".
-- Create pull request in the original repo "devsquads/MagazineTask"
+- Magazine articles application using Nodejs, you can do the following actions:
+    - List articles
+    - Create Article
+    - Update Article
+    - Delete Article
 
-# Story
-Samir the chief editor in “legen- wait for it-dary news” asked the magazine owner Yehia to make him an appointment with DevSquads their technical partner to ask them for help.
-He wants to make an app that would help his writers create new articles and manage them, every article has a title, description, and author name.
+# How to use this app, follow these steps:
+    1. Clone the repo
+    2. Run this command - npm init - in your cmd inside the project directory 
+        or/ in VSCode terminal to install all app dependencies.
+    3. Now you can run the app by using this command - npm start - 
+    4. You can test each method using this link: 
+        https://documenter.getpostman.com/view/11135864/T1DjkfP5?version=latest
+        it's a collection on postman or/ you can use any program you prefer.
 
 
-# Requirements
-- List of articles.
-- Create article.
-- Delete article.
-- Update article.
-- Well organized code is a MUST.
-- Edit README to include the required steps to run your application.
 
-# Stack
--  NodeJS  / Python .
 
-# nice to have
-- Unit tests.
-
-# Task Deadline
-- Monday Morning 20/07/2020.
