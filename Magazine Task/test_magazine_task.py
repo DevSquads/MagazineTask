@@ -1,5 +1,6 @@
 import unittest
 from unittest import mock
+from unittest.mock import patch, PropertyMock
 
 import MagazineTask
 
@@ -71,15 +72,18 @@ class TestDeleteAnArticle(unittest.TestCase):
         isDeleted = MagazineTask.ArticlesManager.deleteAnArticle(self, 3,listOfArticles)
         self.assertEqual(isDeleted,False)
 
-#class TestUpdateAnArticle(unittest.TestCase):
- #   def test_updateAnArticle_equal(self):
-  #      listOfArticles = [MagazineTask.Article("author1","title1","description1")]
-   #     with mock.patch('MagazineTask.ManageArticles.deleteAnArticle',return_value=True):
-    #        deleteResult = MagazineTask.ManageArticles.deleteAnArticle(self,1,listOfArticles)
+""""
+class TestUpdateAnArticle(unittest.TestCase):
+    def test_updateAnArticle_equal(self):
+        listOfArticles = [MagazineTask.Article("author1","title1","description1")]
 
-     #   with mock.patch('MagazineTask.ManageArticles.createArticle',return_value=MagazineTask.Article("updated author", "updated title", "updated description")):
-      #      createResult = MagazineTask.ManageArticles.createArticle(self,1,listOfArticles)
-       # article = MagazineTask.ManageArticles.updateAnArticle(self,1,listOfArticles,createResult)
-        #self.assertEqual(article, listOfArticles[0])
+        with mock.patch('MagazineTask.ArticlesManager.deleteAnArticle',return_value=True),\
+             mock.patch('builtins.input', return_value="author name updated"),\
+             mock.patch('MagazineTask.Context.updateArticle', return_value=MagazineTask.Article("author name updated","title1","description1")):
+            article = MagazineTask.ArticlesManager.updateAnArticle(self,"1", 1, listOfArticles)
+
+
+        self.assertEqual(article, listOfArticles[0])
+""""" 
 if __name__ == '__main__':
     unittest.main()
