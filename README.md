@@ -1,7 +1,7 @@
 # MagazineTask
 
 # Steps to Run the Project
-- Using an existing python 3.7 interpreter
+# Using an existing python 3.7 interpreter
   1) make sure you've installed python 3.7 if you don't have it 
   2) Open the project using pycharm IDE
   3) at the right top of the IDE press "Add Configurations"
@@ -11,7 +11,7 @@
   7) setup the script path to "path/to/MagazineTask.py"
   8) press ok and run the project
 
-- Using virtualenv interpreter
+# Using virtualenv interpreter
   1) install puthon 3.7 if you din't have it
   2) open pycharm and create new project
   3) extend the "project interpreter option"
