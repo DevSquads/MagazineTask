@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+  <title>Magazine Task</title>
+  <link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+    crossorigin="anonymous"
+  />
+</head>
+<body>
+  <div class="magazine-container">
+    <h2>Legendary News</h2>
+    <div class="magazine">
+      <form action="" method="POST" class="magazine-header">
+        <input type="text" name="title" placeholder="Article Title" />
+        <input type="text" name="author" placeholder="Author Name" />
+        <textarea
+          type="text"
+          name="description"
+          placeholder="Article Description"
+          oninput='this.style.height = this.scrollHeight + "px"'
+        ></textarea>
+        <button type="submit">Create Article <span class="fas fa-plus"></span></button>
+      </form>
+      <ul class="articles-list">
+        <% magazineArticles.forEach(details => { %> <% if (details._id == idArticle) { %>
+        <li class="magazine-article">
+          <form class="edit-form" action="/edit/<%= details._id %>" method="POST">
+            <input type="text" value="<%= details.title %>" name="title" placeholder="Article Title" />
+            <input type="text" value="<%= details.author %>" name="author" placeholder="Author Name" />
+            <textarea
+              class="edit-text-area"
+              type="text"
+              name="description"
+              placeholder="Article Description"
+              oninput='this.style.height = this.scrollHeight + "px"'
+            ><%= details.description %>
+            </textarea>
+            <div class="update-options">
+              <button type="submit">Confirm</button>
+              <a href="/" class="cancel">Cancel</a>
+            </div>
+          </form>
+        </li>
+        <% } else { %>
+        <li class="magazine-article">
+          <div class="magazine-article-title"><%= details.title %></div>
+          <a href="/edit/<%= details._id %>" class="edit"> <span class="fas fa-edit"></span> </a>
+          <a href="/remove/<%= details._id %>" class="remove"> <span class="fas fa-times"></span> </a>
+        </li>
+        <% } %> <% }) %>
+      </ul>
+    </div>
+  </div>
+</body>
