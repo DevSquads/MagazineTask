@@ -1,8 +1,14 @@
 const articleModel = require('../models/articleModel');
 const articleValidator = require('../validators/articleValidator');
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 4;
 
-const calcultateNumPages = (articlesNum) => (articlesNum >= PAGE_SIZE ? (articlesNum % PAGE_SIZE) : 1) + parseInt((articlesNum * 1.0) / PAGE_SIZE);
+const calcultateNumPages = (articlesNum) =>{
+    const rem = articlesNum % PAGE_SIZE;
+    const div = parseInt((articlesNum * 1.0) / PAGE_SIZE);
+    let result = div;
+    if(rem>0) result++;
+    return result;
+};
 
 exports.create = (req, res, next) => {
     articleModel.create(req.body).then(addedArticle => {
@@ -29,25 +35,25 @@ exports.getNumPages = (req, res, next) => {
         }).catch(err => next(err));
 };
 
-exports.getPageWithCountPages = (req,res,next) => {
+exports.getPageWithCountPages = (req, res, next) => {
     if (!articleValidator.isNumber(req.params.pageNum)) {
         return next(new Error('this is not a page number'));
     }
     const pageNum = req.params.pageNum;
     Promise.all([
         articleModel.countArticles(),
-        articleModel.getPage(PAGE_SIZE,pageNum)
-    ]).then(([articlesNum , articlePage]) =>{
-            res.header('Content-Type', 'application/json');
-            res.header('Access-Control-Allow-Origin', "*");
-            res.header('Access-Control-Allow-Headers', "*");
-            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-            res.header("Pragma", "no-cache");
-            res.header("Expires", 0);
-            res.statusCode = 200;
-            return res.json({count:calcultateNumPages(articlesNum),page:articlePage});
+        articleModel.getPage(PAGE_SIZE, pageNum)
+    ]).then(([articlesNum, articlePage]) => {
+        res.header('Content-Type', 'application/json');
+        res.header('Access-Control-Allow-Origin', "*");
+        res.header('Access-Control-Allow-Headers', "*");
+        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.header("Pragma", "no-cache");
+        res.header("Expires", 0);
+        res.statusCode = 200;
+        return res.json({ count: calcultateNumPages(articlesNum), page: articlePage });
     });
-}; 
+};
 
 exports.getPage = (req, res, next) => {
     if (!articleValidator.isNumber(req.params.pageNum)) {
@@ -69,9 +75,13 @@ exports.getPage = (req, res, next) => {
 exports.delete = (req, res, next) => {
     articleModel.deleteOne(req.params.id)
         .then(deletedArticle => {
-            res.setHeader('Content-Type', 'application/json');
+            res.header('Content-Type', 'application/json');
             res.header('Access-Control-Allow-Origin', "*");
             res.header('Access-Control-Allow-Headers', "*");
+            res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.header("Pragma", "no-cache");
+            res.header("Expires", 0);
+            res.statusCode = 200;
             res.json(deletedArticle);
         }).catch(err => next(err));
 };

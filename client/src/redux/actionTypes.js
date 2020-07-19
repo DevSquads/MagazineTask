@@ -3,3 +3,7 @@ export const GET_PAGE = 'GET_PAGE';
 export const SET_DEFAULT_CREATED = 'SET_DEFAULT_CREATED';
 export const GET_PAGE_NUMS = 'GET_PAGE_NUMS';
 export const MAGAZINE_INITIATED = 'MAGAZINE_INITIATED';
+export const UPDATE = 'UPDATE';
+export const SHOW_ARTICLE = 'SHOW_ARTICLE';
+export const DELETE = 'DELETE';
+export const SHOW_PAGE = 'SHOW_PAGE';

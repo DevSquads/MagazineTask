@@ -39,6 +39,7 @@ export default class Actions {
         if(err) return this.state;
         this.state.pages[pageNum] = pageData; // getting page and add it into Map dataStructure
         this.state.currPage =  pageNum;
+        this.state.showedArticle = null;
         return this.state;  
     }
     magazinesInitiate(numPages,pageData,err){
@@ -47,17 +48,30 @@ export default class Actions {
         this.state.numPages = numPages;
         return this.addPage(1,pageData,null);
     }
-    deleteArticle(pageNum,articleId){
+    deleteArticle(pageNum,articleId,err){
+        if(err)return this.state;
+        this.state.showedArticle = null;
         this.state.pages[pageNum] = this.state.pages[pageNum].filter(article => article._id !== articleId);
         return this.state;
     }
-    updateArticle(pageNum,articleId,description){
+    updateArticle(pageNum,articleId,description,err){
+        if(err)return this.state;
         this.state.pages[pageNum] = this.state.pages[pageNum].map(article => {
             if(article._id === articleId){
                 article.description = description;
             }
             return article;
         });
+        this.state.showedArticle = null;
+        return this.state;
+    }
+    showPage(pageNum){
+        this.state.currPage = pageNum;
+        this.state.showedArticle = null;
+        return this.state;
+    }
+    showArticle(article){
+        this.state.showedArticle = article;
         return this.state;
     }
 }

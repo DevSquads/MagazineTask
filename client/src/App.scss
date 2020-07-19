@@ -1,16 +1,23 @@
 @import '~bootstrap/scss/bootstrap.scss';
 $articleBackground : #F8F9FA;
-.article
-{
+.article-heading{
     padding: 8px;
     .auther{
         font-size: small;
         font-weight: 200;
     }
 }
+.article
+{
+    @extend .article-heading;
+}
 .article:hover{
     background-color: $articleBackground;
     cursor: pointer;
+}
+
+.article-show{
+    @extend .article-heading;
 }
 
 #root{

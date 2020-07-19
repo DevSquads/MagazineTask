@@ -1,10 +1,5 @@
 import * as actionTypes from './actionTypes';
-import { create } from 'apisauce'
 
-const api = create({
-    baseURL: 'http://localhost:5000/api',
-    headers: { Accept: 'application/json' },
-  })
   
 
 async function doRequest(url, method, body) {
@@ -50,9 +45,6 @@ export const createArticle = (data) => {
 }
 export const getPage = (pageNum) => {
     return (dispatch) => {
-        // api.get('/page/'+String(pageNum))
-        // .then(res => dispatch({type:actionTypes.GET_PAGE,page:res.data,pageNum:pageNum}))
-        // .catch(err => dispatch({type:actionTypes.GET_PAGE,err:err}))
         doRequest('http://localhost:5000/api/page/'+String(pageNum),'GET',null)
         .then(res => dispatch({type:actionTypes.GET_PAGE,page:res,pageNum:pageNum}))
         .catch(err => dispatch({type:actionTypes.GET_PAGE,err:err}));
@@ -72,9 +64,32 @@ export const getPageNums = () => {
     return (dispatch) => {
         doRequest('http://localhost:5000/api/numpages','GET',null)
         .then(res => dispatch({type:actionTypes.GET_PAGE_NUMS,count:res.count}))
-        .catch(err => dispatch({type:actionTypes.GET_PAGE_NUMS,err:err}))
+        .catch(err => dispatch({type:actionTypes.GET_PAGE_NUMS,err:err}));
     };
 };
+
+export const updateArticle = (input,pageNum) =>{
+    return (dispatch) => {
+        doRequest('http://localhost:5000/api/update','POST',input)
+        .then(res => dispatch({type:actionTypes.UPDATE,article:res,pageNum:pageNum}))
+        .catch(err => dispatch({type:actionTypes.UPDATE,err:err}));
+    }
+}
+export const deleteArticle = (pageNum,id) => {
+    return (dispatch) => {
+        doRequest('http://localhost:5000/api/delete/'+String(id),'GET',null)
+        .then(res => dispatch({type:actionTypes.DELETE,id:id,pageNum:pageNum}))
+        .catch(err => dispatch({type:actionTypes.DELETE,err:err}));
+    }
+}
 export const setCreatedNull = () => {
     return {type:actionTypes.SET_DEFAULT_CREATED};
+}
+
+export const showArticle = (article) => {
+    return {type:actionTypes.SHOW_ARTICLE,article:article};
+}
+
+export const showPage = (pageNum) => {
+    return {type:actionTypes.SHOW_PAGE,pageNum:pageNum};
 }
