@@ -1,6 +1,8 @@
 const expect = require('expect');
+
 const request = require('supertest');
 let app = require('../app');
+
 
 describe('GET page/:pagenum', () => {
     it('get page number', (done) => {
@@ -22,3 +24,14 @@ describe('GET page/:pagenum', () => {
     });
 });
 
+describe('GET /numpages', () => {
+    it('num pages', (done) => {
+        request(app)
+        .get('/api/numpages')
+        .expect(200)
+        .expect((res) => {
+            expect(res.body!=null).toBe(true);
+            expect(res.body.count && res.body.count>=0).toBe(true);
+        }).end(done);
+    });
+});
